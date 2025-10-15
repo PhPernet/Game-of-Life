@@ -1,5 +1,7 @@
 #include <vector>
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
 #include "grid.h"
 #include "cell.h"
 
@@ -63,20 +65,21 @@ int Grid::evolve() {
 }
 
 void Grid::random_init() {
+    std::srand(std::time(nullptr));
     for (int y = 0; y < height; ++y) {
         for (int x = 0; x < width; ++x) {
-            cells[y][x].setState((rand() % 4 == 0) ? 1 : 0);
+            cells[y][x].setState((std::rand() % 4 == 0) ? 1 : 0);
         }
     }
 }
 
-void Grid::print() const {
-    // Clean the console and place the cursor at the top left
-    std::cout << "\033[2J\033[H";
-    for (const auto& row : cells) {
-        for (const auto& cell : row) {
-            cell.print();
-        }
-        std::cout << '\n';
-    }
-}
+// void Grid::print() const {
+//     // Clean the console and place the cursor at the top left
+//     std::cout << "\033[2J\033[H";
+//     for (const auto& row : cells) {
+//         for (const auto& cell : row) {
+//             cell.print();
+//         }
+//         std::cout << '\n';
+//     }
+// }

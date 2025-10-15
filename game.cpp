@@ -6,10 +6,10 @@
 
 int main()
 {
-    int width = 80;
-    int height = 60;
-    int windowWidth = 800;
-    int windowHeight = 600;
+    int width = 144;
+    int height = 90;
+    int windowWidth = 1440;
+    int windowHeight = 903;
     int cellSize = 10;
 
     Grid grid(width, height);
@@ -22,8 +22,8 @@ int main()
         renderer.handleEvents();
         grid.evolve();
         renderer.drawGrid(grid);
-        std::this_thread::sleep_for(std::chrono::milliseconds(150));
-        std::cout << "Win size: " << renderer.getWindow().getSize().x << "x" << renderer.getWindow().getSize().y << "\n";
+        // std::this_thread::sleep_for(std::chrono::milliseconds(150));
+        // std::cout << "Win size: " << renderer.getWindow().getSize().x << "x" << renderer.getWindow().getSize().y << "\n";
     }
 
     return 0;
