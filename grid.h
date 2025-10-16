@@ -2,6 +2,7 @@
 #include <vector>
 #include <iostream>
 #include "cell.h"
+#include <SFML/Graphics.hpp>
 
 class Grid {
 private:
@@ -19,4 +20,7 @@ public:
     int evolve();
     void random_init();
     void print() const;
+
+    // Remplit image (width x height) : pixel.r = 255 si alive, 0 sinon.
+    void fillImage(sf::Image& image) const;
 };

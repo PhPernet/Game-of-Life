@@ -4,8 +4,8 @@
 #include <ctime>
 #include "grid.h"
 #include "cell.h"
+#include <SFML/Graphics.hpp>
 
-// Constructor with default dimensions 200x100
 Grid::Grid(int w, int h) : width(w), height(h), cells(h, std::vector<Cell>(w, Cell(0))) {}
 
 int Grid::getWidth() const {
@@ -69,6 +69,20 @@ void Grid::random_init() {
     for (int y = 0; y < height; ++y) {
         for (int x = 0; x < width; ++x) {
             cells[y][x].setState((std::rand() % 4 == 0) ? 1 : 0);
+        }
+    }
+}
+
+void Grid::fillImage(sf::Image& image) const {
+    sf::Vector2u size = image.getSize();
+    if ((int)size.x != width || (int)size.y != height) {
+        image.create(width, height, sf::Color::Black);
+    }
+    for (int y = 0; y < height; ++y) {
+        for (int x = 0; x < width; ++x) {
+            bool alive = (cells[y][x].getState() == 1);
+            sf::Uint8 v = alive ? 255u : 0u;
+            image.setPixel(x, y, sf::Color(v, v, v));
         }
     }
 }
