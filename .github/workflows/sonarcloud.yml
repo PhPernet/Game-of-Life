@@ -20,6 +20,9 @@ jobs:
       - name: Install Build Wrapper
         uses: SonarSource/sonarqube-scan-action/install-build-wrapper@v6
 
+      - name: Install SFML
+        run: sudo apt-get update && sudo apt-get install libsfml-dev
+
       - name: Configure CMake
         run: cmake -S . -B build
 
