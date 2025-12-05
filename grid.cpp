@@ -5,7 +5,7 @@
 #include "grid.h"
 #include "cell.h"
 
-// Constructor with default dimensions 200x100
+// Constructor with default dimensions (200x100)
 Grid::Grid(int w, int h) : width(w), height(h), cells(h, std::vector<Cell>(w, Cell(0))) {}
 
 int Grid::getWidth() const {
